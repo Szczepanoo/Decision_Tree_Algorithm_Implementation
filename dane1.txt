@@ -1,0 +1,4 @@
+1 0.5 zielony 1
+3 -2 czerwony 0
+5 -2 zielony 1
+-1 10 niebieski 2
