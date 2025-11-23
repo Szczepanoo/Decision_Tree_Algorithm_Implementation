@@ -1,3 +1,6 @@
+
+# 1. Odczyt danych
+
 def wykryj_separator(linia):
     """
     Wykrywa separator, znajdując pierwszy znak niealfanumeryczny i
@@ -159,6 +162,83 @@ def wystapienia_wartosci(atrybuty):
 
 
 
+# 2 Wynaczanie Entropii
+import math
+
+def log2_approx(x, epsilon=1e-12):
+    """
+    Przybliżenie logarytmu w bazie 2 dla x > 0
+    """
+    if x <= 0:
+        return 0.0  # bezpieczeństwo
+    n = 0
+    while x >= 2:
+        x /= 2
+        n += 1
+    while x < 1:
+        x *= 2
+        n -= 1
+    # Teraz x w [1,2), przybliżenie log2(1+y) ~ y - y^2/2 + y^3/3 ...
+    y = x - 1
+    term = y
+    result = 0.0
+    k = 1
+    while abs(term) > epsilon:
+        result += term / k
+        k += 1
+        term *= -y
+    return n + result
+
+def entropia(wystapienia):
+    """
+    Liczy entropię na podstawie słownika {wartość: liczba_wystąpień}.
+    Wzór: I(P) = - sum(pi * log2(pi)) dla wszystkich i
+    """
+    total = sum(wystapienia.values())
+    if total == 0:
+        return 0.0
+
+    ent = 0.0
+    for count in wystapienia.values():
+        if count > 0:
+            p = count / total
+            ent -= p * math.log2(p)
+    return ent
+
+
+# Funkcja informacyjna
+def info_atrybutu(atrybuty, decyzje):
+    """
+    Liczy Info(X, T) dla każdego atrybutu X w tabeli atrybutów względem decyzji.
+    Zwraca listę wartości Info(X_i, T) dla wszystkich kolumn.
+    """
+    liczba_kol = len(atrybuty[0])
+    total = len(atrybuty)
+    wyniki = []
+
+    for kol in range(liczba_kol):
+        # grupowanie obiektów po wartościach atrybutu
+        grupy = {}
+        for i, w in enumerate(atrybuty):
+            val = w[kol]
+            if val not in grupy:
+                grupy[val] = []
+            grupy[val].append(decyzje[i])
+
+        # liczenie Info dla atrybutu: suma (|Ti|/|T| * entropia(Ti))
+        info = 0.0
+        for podzbior in grupy.values():
+            # obliczamy entropię dla podzbioru decyzji Ti
+            wyst = {}
+            for d in podzbior:
+                wyst[d] = wyst.get(d, 0) + 1
+            ent = entropia(wyst)
+            info += (len(podzbior) / total) * ent
+        wyniki.append(info)
+
+    return wyniki
+
+
 # PRZYKŁAD UŻYCIA
 
 pliki = ["dane1.txt", "dane2.txt", "dane3.txt"]
@@ -182,5 +262,21 @@ for nazwa in pliki:
     for i, sl in enumerate(wyniki, start=1):
         print(f"Atrybut a{i}: {sl}")
 
+    print("\nEntropia wartości decyzyjnych:")
+    ent_dec = entropia(dict((d, decyzje.count(d)) for d in set(decyzje)))
+    print(f"I(D) = {ent_dec:.6f}")
+
+    # opcjonalnie: entropia dla każdego atrybutu
+    print("\nEntropia dla każdego atrybutu:")
+    for i, sl in enumerate(wyniki, start=1):
+        ent = entropia(sl)
+        print(f"I(A{i}) = {ent:.6f}")
+
+    print("\nInfo(X, T) dla każdego atrybutu:")
+    info_wszystkie = info_atrybutu(atrybuty, decyzje)
+    for i, info_val in enumerate(info_wszystkie, start=1):
+        print(f"Info(a{i}, T) = {info_val:.6f}")
+
     print("\n")  # odstęp między plikami
+
 
