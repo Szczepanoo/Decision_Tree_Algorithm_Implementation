@@ -1,0 +1,515 @@
+// Drzewo decyzyjne
+digraph {
+	1941817798720 [label=a6 color=lightblue shape=ellipse style=filled]
+	1941817661952 [label=a5 color=lightblue shape=ellipse style=filled]
+	1941817798720 -> 1941817661952 [label=no]
+	1941817660032 [label=a4 color=lightblue shape=ellipse style=filled]
+	1941817661952 -> 1941817660032 [label="0-2"]
+	1941817601856 [label=a1 color=lightblue shape=ellipse style=filled]
+	1941817660032 -> 1941817601856 [label="30-34"]
+	1941817600896 [label=a7 color=lightblue shape=ellipse style=filled]
+	1941817601856 -> 1941817600896 [label="no-recurrence-events"]
+	1941817219296 [label="Liść
+no" color=lightgrey shape=box style=filled]
+	1941817600896 -> 1941817219296 [label=3]
+	1941817218480 [label="Liść
+no" color=lightgrey shape=box style=filled]
+	1941817600896 -> 1941817218480 [label=1]
+	1941817600800 [label=a9 color=lightblue shape=ellipse style=filled]
+	1941817600896 -> 1941817600800 [label=2]
+	1941817218048 [label="Liść
+no" color=lightgrey shape=box style=filled]
+	1941817600800 -> 1941817218048 [label=left_low]
+	1941817600512 [label=a2 color=lightblue shape=ellipse style=filled]
+	1941817600800 -> 1941817600512 [label=left_up]
+	1941817218384 [label="Liść
+no" color=lightgrey shape=box style=filled]
+	1941817600512 -> 1941817218384 [label="30-39"]
+	1941817599984 [label="Liść
+no" color=lightgrey shape=box style=filled]
+	1941817600512 -> 1941817599984 [label="60-69"]
+	1941817600464 [label="Liść
+yes" color=lightgrey shape=box style=filled]
+	1941817600512 -> 1941817600464 [label="40-49"]
+	1941817600608 [label="Liść
+no" color=lightgrey shape=box style=filled]
+	1941817600800 -> 1941817600608 [label=right_low]
+	1941817600704 [label="Liść
+yes" color=lightgrey shape=box style=filled]
+	1941817600800 -> 1941817600704 [label=right_up]
+	1941817601760 [label=a9 color=lightblue shape=ellipse style=filled]
+	1941817601856 -> 1941817601760 [label="recurrence-events"]
+	1941817600992 [label="Liść
+no" color=lightgrey shape=box style=filled]
+	1941817601760 -> 1941817600992 [label="?"]
+	1941817601088 [label="Liść
+no" color=lightgrey shape=box style=filled]
+	1941817601760 -> 1941817601088 [label=right_up]
+	1941817601184 [label="Liść
+no" color=lightgrey shape=box style=filled]
+	1941817601760 -> 1941817601184 [label=central]
+	1941817601568 [label=a2 color=lightblue shape=ellipse style=filled]
+	1941817601760 -> 1941817601568 [label=left_up]
+	1941817601280 [label="Liść
+no" color=lightgrey shape=box style=filled]
+	1941817601568 -> 1941817601280 [label="30-39"]
+	1941817601376 [label="Liść
+yes" color=lightgrey shape=box style=filled]
+	1941817601568 -> 1941817601376 [label="50-59"]
+	1941817601472 [label="Liść
+yes" color=lightgrey shape=box style=filled]
+	1941817601568 -> 1941817601472 [label="60-69"]
+	1941817601664 [label="Liść
+yes" color=lightgrey shape=box style=filled]
+	1941817601760 -> 1941817601664 [label=left_low]
+	1941817635552 [label=a7 color=lightblue shape=ellipse style=filled]
+	1941817660032 -> 1941817635552 [label="20-24"]
+	1941817601952 [label="Liść
+no" color=lightgrey shape=box style=filled]
+	1941817635552 -> 1941817601952 [label=2]
+	1941817634880 [label="Liść
+no" color=lightgrey shape=box style=filled]
+	1941817635552 -> 1941817634880 [label=1]
+	1941817635456 [label=a3 color=lightblue shape=ellipse style=filled]
+	1941817635552 -> 1941817635456 [label=3]
+	1941817634976 [label="Liść
+no" color=lightgrey shape=box style=filled]
+	1941817635456 -> 1941817634976 [label=ge40]
+	1941817635360 [label=a9 color=lightblue shape=ellipse style=filled]
+	1941817635456 -> 1941817635360 [label=premeno]
+	1941817635072 [label="Liść
+no" color=lightgrey shape=box style=filled]
+	1941817635360 -> 1941817635072 [label=central]
+	1941817635168 [label="Liść
+yes" color=lightgrey shape=box style=filled]
+	1941817635360 -> 1941817635168 [label=left_low]
+	1941817635264 [label="Liść
+yes" color=lightgrey shape=box style=filled]
+	1941817635360 -> 1941817635264 [label=left_up]
+	1941817636896 [label=a9 color=lightblue shape=ellipse style=filled]
+	1941817660032 -> 1941817636896 [label="15-19"]
+	1941817636416 [label=a2 color=lightblue shape=ellipse style=filled]
+	1941817636896 -> 1941817636416 [label=left_up]
+	1941817636128 [label=a8 color=lightblue shape=ellipse style=filled]
+	1941817636416 -> 1941817636128 [label="60-69"]
+	1941817635936 [label=a7 color=lightblue shape=ellipse style=filled]
+	1941817636128 -> 1941817635936 [label=right]
+	1941817635648 [label="Liść
+no" color=lightgrey shape=box style=filled]
+	1941817635936 -> 1941817635648 [label=2]
+	1941817635744 [label="Liść
+no" color=lightgrey shape=box style=filled]
+	1941817635936 -> 1941817635744 [label=1]
+	1941817635840 [label="Liść
+yes" color=lightgrey shape=box style=filled]
+	1941817635936 -> 1941817635840 [label=3]
+	1941817636032 [label="Liść
+yes" color=lightgrey shape=box style=filled]
+	1941817636128 -> 1941817636032 [label=left]
+	1941817636224 [label="Liść
+no" color=lightgrey shape=box style=filled]
+	1941817636416 -> 1941817636224 [label="30-39"]
+	1941817636320 [label="Liść
+no" color=lightgrey shape=box style=filled]
+	1941817636416 -> 1941817636320 [label="40-49"]
+	1941817636512 [label="Liść
+no" color=lightgrey shape=box style=filled]
+	1941817636896 -> 1941817636512 [label=left_low]
+	1941817636608 [label="Liść
+no" color=lightgrey shape=box style=filled]
+	1941817636896 -> 1941817636608 [label=central]
+	1941817636704 [label="Liść
+no" color=lightgrey shape=box style=filled]
+	1941817636896 -> 1941817636704 [label=right_low]
+	1941817636800 [label="Liść
+no" color=lightgrey shape=box style=filled]
+	1941817636896 -> 1941817636800 [label=right_up]
+	1941817636992 [label="Liść
+no" color=lightgrey shape=box style=filled]
+	1941817660032 -> 1941817636992 [label="0-4"]
+	1941817648128 [label=a2 color=lightblue shape=ellipse style=filled]
+	1941817660032 -> 1941817648128 [label="25-29"]
+	1941817637568 [label=a1 color=lightblue shape=ellipse style=filled]
+	1941817648128 -> 1941817637568 [label="50-59"]
+	1941817637088 [label="Liść
+no" color=lightgrey shape=box style=filled]
+	1941817637568 -> 1941817637088 [label="no-recurrence-events"]
+	1941817637472 [label=a7 color=lightblue shape=ellipse style=filled]
+	1941817637568 -> 1941817637472 [label="recurrence-events"]
+	1941817637184 [label="Liść
+no" color=lightgrey shape=box style=filled]
+	1941817637472 -> 1941817637184 [label=2]
+	1941817637280 [label="Liść
+no" color=lightgrey shape=box style=filled]
+	1941817637472 -> 1941817637280 [label=1]
+	1941817637376 [label="Liść
+yes" color=lightgrey shape=box style=filled]
+	1941817637472 -> 1941817637376 [label=3]
+	1941817637664 [label="Liść
+no" color=lightgrey shape=box style=filled]
+	1941817648128 -> 1941817637664 [label="30-39"]
+	1941817647648 [label=a3 color=lightblue shape=ellipse style=filled]
+	1941817648128 -> 1941817647648 [label="40-49"]
+	1941817647456 [label=a9 color=lightblue shape=ellipse style=filled]
+	1941817647648 -> 1941817647456 [label=premeno]
+	1941817638336 [label=a1 color=lightblue shape=ellipse style=filled]
+	1941817647456 -> 1941817638336 [label=left_up]
+	1941817638144 [label=a7 color=lightblue shape=ellipse style=filled]
+	1941817638336 -> 1941817638144 [label="no-recurrence-events"]
+	1941817637952 [label=a8 color=lightblue shape=ellipse style=filled]
+	1941817638144 -> 1941817637952 [label=2]
+	1941817637760 [label="Liść
+no" color=lightgrey shape=box style=filled]
+	1941817637952 -> 1941817637760 [label=left]
+	1941817637856 [label="Liść
+no" color=lightgrey shape=box style=filled]
+	1941817637952 -> 1941817637856 [label=right]
+	1941817638048 [label="Liść
+yes" color=lightgrey shape=box style=filled]
+	1941817638144 -> 1941817638048 [label=3]
+	1941817638240 [label="Liść
+no" color=lightgrey shape=box style=filled]
+	1941817638336 -> 1941817638240 [label="recurrence-events"]
+	1941817638816 [label=a7 color=lightblue shape=ellipse style=filled]
+	1941817647456 -> 1941817638816 [label=left_low]
+	1941817638624 [label=a8 color=lightblue shape=ellipse style=filled]
+	1941817638816 -> 1941817638624 [label=2]
+	1941817638432 [label="Liść
+no" color=lightgrey shape=box style=filled]
+	1941817638624 -> 1941817638432 [label=right]
+	1941817638528 [label="Liść
+yes" color=lightgrey shape=box style=filled]
+	1941817638624 -> 1941817638528 [label=left]
+	1941817638720 [label="Liść
+yes" color=lightgrey shape=box style=filled]
+	1941817638816 -> 1941817638720 [label=1]
+	1941817647168 [label="Liść
+no" color=lightgrey shape=box style=filled]
+	1941817647456 -> 1941817647168 [label=right_low]
+	1941817647264 [label="Liść
+no" color=lightgrey shape=box style=filled]
+	1941817647456 -> 1941817647264 [label=central]
+	1941817647360 [label="Liść
+no" color=lightgrey shape=box style=filled]
+	1941817647456 -> 1941817647360 [label=right_up]
+	1941817647552 [label="Liść
+no" color=lightgrey shape=box style=filled]
+	1941817647648 -> 1941817647552 [label=ge40]
+	1941817648032 [label=a9 color=lightblue shape=ellipse style=filled]
+	1941817648128 -> 1941817648032 [label="60-69"]
+	1941817647744 [label="Liść
+no" color=lightgrey shape=box style=filled]
+	1941817648032 -> 1941817647744 [label=left_up]
+	1941817647840 [label="Liść
+no" color=lightgrey shape=box style=filled]
+	1941817648032 -> 1941817647840 [label=left_low]
+	1941817647936 [label="Liść
+yes" color=lightgrey shape=box style=filled]
+	1941817648032 -> 1941817647936 [label=right_low]
+	1941817648704 [label=a8 color=lightblue shape=ellipse style=filled]
+	1941817660032 -> 1941817648704 [label="50-54"]
+	1941817648224 [label="Liść
+no" color=lightgrey shape=box style=filled]
+	1941817648704 -> 1941817648224 [label=left]
+	1941817648608 [label=a7 color=lightblue shape=ellipse style=filled]
+	1941817648704 -> 1941817648608 [label=right]
+	1941817648320 [label="Liść
+no" color=lightgrey shape=box style=filled]
+	1941817648608 -> 1941817648320 [label=1]
+	1941817648416 [label="Liść
+yes" color=lightgrey shape=box style=filled]
+	1941817648608 -> 1941817648416 [label=2]
+	1941817648512 [label="Liść
+no" color=lightgrey shape=box style=filled]
+	1941817648608 -> 1941817648512 [label=3]
+	1941817650144 [label=a7 color=lightblue shape=ellipse style=filled]
+	1941817660032 -> 1941817650144 [label="10-14"]
+	1941817648800 [label="Liść
+no" color=lightgrey shape=box style=filled]
+	1941817650144 -> 1941817648800 [label=1]
+	1941817648896 [label="Liść
+no" color=lightgrey shape=box style=filled]
+	1941817650144 -> 1941817648896 [label=3]
+	1941817650048 [label=a2 color=lightblue shape=ellipse style=filled]
+	1941817650144 -> 1941817650048 [label=2]
+	1941817649376 [label=a8 color=lightblue shape=ellipse style=filled]
+	1941817650048 -> 1941817649376 [label="40-49"]
+	1941817649184 [label=a9 color=lightblue shape=ellipse style=filled]
+	1941817649376 -> 1941817649184 [label=left]
+	1941817648992 [label="Liść
+no" color=lightgrey shape=box style=filled]
+	1941817649184 -> 1941817648992 [label=left_low]
+	1941817649088 [label="Liść
+no" color=lightgrey shape=box style=filled]
+	1941817649184 -> 1941817649088 [label=left_up]
+	1941817649280 [label="Liść
+no" color=lightgrey shape=box style=filled]
+	1941817649376 -> 1941817649280 [label=right]
+	1941817649472 [label="Liść
+no" color=lightgrey shape=box style=filled]
+	1941817650048 -> 1941817649472 [label="50-59"]
+	1941817649568 [label="Liść
+no" color=lightgrey shape=box style=filled]
+	1941817650048 -> 1941817649568 [label="70-79"]
+	1941817649856 [label=a8 color=lightblue shape=ellipse style=filled]
+	1941817650048 -> 1941817649856 [label="60-69"]
+	1941817649664 [label="Liść
+yes" color=lightgrey shape=box style=filled]
+	1941817649856 -> 1941817649664 [label=right]
+	1941817649760 [label="Liść
+no" color=lightgrey shape=box style=filled]
+	1941817649856 -> 1941817649760 [label=left]
+	1941817649952 [label="Liść
+no" color=lightgrey shape=box style=filled]
+	1941817650048 -> 1941817649952 [label="30-39"]
+	1941817651008 [label=a2 color=lightblue shape=ellipse style=filled]
+	1941817660032 -> 1941817651008 [label="40-44"]
+	1941817650240 [label="Liść
+no" color=lightgrey shape=box style=filled]
+	1941817651008 -> 1941817650240 [label="50-59"]
+	1941817650336 [label="Liść
+no" color=lightgrey shape=box style=filled]
+	1941817651008 -> 1941817650336 [label="40-49"]
+	1941817650432 [label="Liść
+no" color=lightgrey shape=box style=filled]
+	1941817651008 -> 1941817650432 [label="70-79"]
+	1941817650816 [label=a9 color=lightblue shape=ellipse style=filled]
+	1941817651008 -> 1941817650816 [label="30-39"]
+	1941817650528 [label="Liść
+no" color=lightgrey shape=box style=filled]
+	1941817650816 -> 1941817650528 [label=right_up]
+	1941817650624 [label="Liść
+yes" color=lightgrey shape=box style=filled]
+	1941817650816 -> 1941817650624 [label=left_low]
+	1941817650720 [label="Liść
+no" color=lightgrey shape=box style=filled]
+	1941817650816 -> 1941817650720 [label=left_up]
+	1941817650912 [label="Liść
+no" color=lightgrey shape=box style=filled]
+	1941817651008 -> 1941817650912 [label="60-69"]
+	1941817651104 [label="Liść
+no" color=lightgrey shape=box style=filled]
+	1941817660032 -> 1941817651104 [label="35-39"]
+	1941817659840 [label=a2 color=lightblue shape=ellipse style=filled]
+	1941817660032 -> 1941817659840 [label="5-9"]
+	1941817659456 [label="Liść
+no" color=lightgrey shape=box style=filled]
+	1941817659840 -> 1941817659456 [label="60-69"]
+	1941817659552 [label="Liść
+no" color=lightgrey shape=box style=filled]
+	1941817659840 -> 1941817659552 [label="50-59"]
+	1941817659648 [label="Liść
+no" color=lightgrey shape=box style=filled]
+	1941817659840 -> 1941817659648 [label="30-39"]
+	1941817659744 [label="Liść
+yes" color=lightgrey shape=box style=filled]
+	1941817659840 -> 1941817659744 [label="40-49"]
+	1941817659936 [label="Liść
+yes" color=lightgrey shape=box style=filled]
+	1941817660032 -> 1941817659936 [label="45-49"]
+	1941817660320 [label=a9 color=lightblue shape=ellipse style=filled]
+	1941817661952 -> 1941817660320 [label="6-8"]
+	1941817660128 [label="Liść
+no" color=lightgrey shape=box style=filled]
+	1941817660320 -> 1941817660128 [label=left_up]
+	1941817660224 [label="Liść
+yes" color=lightgrey shape=box style=filled]
+	1941817660320 -> 1941817660224 [label=left_low]
+	1941817661568 [label=a4 color=lightblue shape=ellipse style=filled]
+	1941817661952 -> 1941817661568 [label="3-5"]
+	1941817660608 [label=a1 color=lightblue shape=ellipse style=filled]
+	1941817661568 -> 1941817660608 [label="20-24"]
+	1941817660416 [label="Liść
+no" color=lightgrey shape=box style=filled]
+	1941817660608 -> 1941817660416 [label="no-recurrence-events"]
+	1941817660512 [label="Liść
+yes" color=lightgrey shape=box style=filled]
+	1941817660608 -> 1941817660512 [label="recurrence-events"]
+	1941817660704 [label="Liść
+yes" color=lightgrey shape=box style=filled]
+	1941817661568 -> 1941817660704 [label="40-44"]
+	1941817660992 [label=a1 color=lightblue shape=ellipse style=filled]
+	1941817661568 -> 1941817660992 [label="25-29"]
+	1941817660800 [label="Liść
+yes" color=lightgrey shape=box style=filled]
+	1941817660992 -> 1941817660800 [label="no-recurrence-events"]
+	1941817660896 [label="Liść
+no" color=lightgrey shape=box style=filled]
+	1941817660992 -> 1941817660896 [label="recurrence-events"]
+	1941817661088 [label="Liść
+no" color=lightgrey shape=box style=filled]
+	1941817661568 -> 1941817661088 [label="10-14"]
+	1941817661472 [label=a2 color=lightblue shape=ellipse style=filled]
+	1941817661568 -> 1941817661472 [label="30-34"]
+	1941817661184 [label="Liść
+no" color=lightgrey shape=box style=filled]
+	1941817661472 -> 1941817661184 [label="40-49"]
+	1941817661280 [label="Liść
+yes" color=lightgrey shape=box style=filled]
+	1941817661472 -> 1941817661280 [label="30-39"]
+	1941817661376 [label="Liść
+no" color=lightgrey shape=box style=filled]
+	1941817661472 -> 1941817661376 [label="50-59"]
+	1941817661664 [label="Liść
+no" color=lightgrey shape=box style=filled]
+	1941817661952 -> 1941817661664 [label="15-17"]
+	1941817661760 [label="Liść
+yes" color=lightgrey shape=box style=filled]
+	1941817661952 -> 1941817661760 [label="12-14"]
+	1941817661856 [label="Liść
+yes" color=lightgrey shape=box style=filled]
+	1941817661952 -> 1941817661856 [label="9-11"]
+	1941817708064 [label=a5 color=lightblue shape=ellipse style=filled]
+	1941817798720 -> 1941817708064 [label=yes]
+	1941817663104 [label=a4 color=lightblue shape=ellipse style=filled]
+	1941817708064 -> 1941817663104 [label="6-8"]
+	1941817662432 [label=a1 color=lightblue shape=ellipse style=filled]
+	1941817663104 -> 1941817662432 [label="30-34"]
+	1941817662048 [label="Liść
+no" color=lightgrey shape=box style=filled]
+	1941817662432 -> 1941817662048 [label="no-recurrence-events"]
+	1941817662336 [label=a7 color=lightblue shape=ellipse style=filled]
+	1941817662432 -> 1941817662336 [label="recurrence-events"]
+	1941817662144 [label="Liść
+no" color=lightgrey shape=box style=filled]
+	1941817662336 -> 1941817662144 [label=3]
+	1941817662240 [label="Liść
+yes" color=lightgrey shape=box style=filled]
+	1941817662336 -> 1941817662240 [label=2]
+	1941817662528 [label="Liść
+yes" color=lightgrey shape=box style=filled]
+	1941817663104 -> 1941817662528 [label="25-29"]
+	1941817662624 [label="Liść
+no" color=lightgrey shape=box style=filled]
+	1941817663104 -> 1941817662624 [label="45-49"]
+	1941817662720 [label="Liść
+yes" color=lightgrey shape=box style=filled]
+	1941817663104 -> 1941817662720 [label="15-19"]
+	1941817662816 [label="Liść
+no" color=lightgrey shape=box style=filled]
+	1941817663104 -> 1941817662816 [label="35-39"]
+	1941817662912 [label="Liść
+yes" color=lightgrey shape=box style=filled]
+	1941817663104 -> 1941817662912 [label="10-14"]
+	1941817663008 [label="Liść
+yes" color=lightgrey shape=box style=filled]
+	1941817663104 -> 1941817663008 [label="40-44"]
+	1941817705184 [label=a4 color=lightblue shape=ellipse style=filled]
+	1941817708064 -> 1941817705184 [label="0-2"]
+	1941817663200 [label="Liść
+no" color=lightgrey shape=box style=filled]
+	1941817705184 -> 1941817663200 [label="25-29"]
+	1941817663296 [label="Liść
+yes" color=lightgrey shape=box style=filled]
+	1941817705184 -> 1941817663296 [label="35-39"]
+	1941817663392 [label="Liść
+no" color=lightgrey shape=box style=filled]
+	1941817705184 -> 1941817663392 [label="20-24"]
+	1941817704512 [label="Liść
+yes" color=lightgrey shape=box style=filled]
+	1941817705184 -> 1941817704512 [label="50-54"]
+	1941817704800 [label=a1 color=lightblue shape=ellipse style=filled]
+	1941817705184 -> 1941817704800 [label="15-19"]
+	1941817704608 [label="Liść
+yes" color=lightgrey shape=box style=filled]
+	1941817704800 -> 1941817704608 [label="no-recurrence-events"]
+	1941817704704 [label="Liść
+no" color=lightgrey shape=box style=filled]
+	1941817704800 -> 1941817704704 [label="recurrence-events"]
+	1941817705088 [label=a2 color=lightblue shape=ellipse style=filled]
+	1941817705184 -> 1941817705088 [label="30-34"]
+	1941817704896 [label="Liść
+no" color=lightgrey shape=box style=filled]
+	1941817705088 -> 1941817704896 [label="40-49"]
+	1941817704992 [label="Liść
+yes" color=lightgrey shape=box style=filled]
+	1941817705088 -> 1941817704992 [label="60-69"]
+	1941817705664 [label=a1 color=lightblue shape=ellipse style=filled]
+	1941817708064 -> 1941817705664 [label="9-11"]
+	1941817705280 [label="Liść
+yes" color=lightgrey shape=box style=filled]
+	1941817705664 -> 1941817705280 [label="no-recurrence-events"]
+	1941817705568 [label=a3 color=lightblue shape=ellipse style=filled]
+	1941817705664 -> 1941817705568 [label="recurrence-events"]
+	1941817705376 [label="Liść
+no" color=lightgrey shape=box style=filled]
+	1941817705568 -> 1941817705376 [label=premeno]
+	1941817705472 [label="Liść
+yes" color=lightgrey shape=box style=filled]
+	1941817705568 -> 1941817705472 [label=ge40]
+	1941817707488 [label=a3 color=lightblue shape=ellipse style=filled]
+	1941817708064 -> 1941817707488 [label="3-5"]
+	1941817706912 [label=a7 color=lightblue shape=ellipse style=filled]
+	1941817707488 -> 1941817706912 [label=premeno]
+	1941817705760 [label="Liść
+yes" color=lightgrey shape=box style=filled]
+	1941817706912 -> 1941817705760 [label=3]
+	1941817706816 [label=a4 color=lightblue shape=ellipse style=filled]
+	1941817706912 -> 1941817706816 [label=2]
+	1941817706336 [label=a8 color=lightblue shape=ellipse style=filled]
+	1941817706816 -> 1941817706336 [label="20-24"]
+	1941817706144 [label=a2 color=lightblue shape=ellipse style=filled]
+	1941817706336 -> 1941817706144 [label=left]
+	1941817705856 [label="Liść
+no" color=lightgrey shape=box style=filled]
+	1941817706144 -> 1941817705856 [label="50-59"]
+	1941817705952 [label="Liść
+no" color=lightgrey shape=box style=filled]
+	1941817706144 -> 1941817705952 [label="30-39"]
+	1941817706048 [label="Liść
+yes" color=lightgrey shape=box style=filled]
+	1941817706144 -> 1941817706048 [label="40-49"]
+	1941817706240 [label="Liść
+yes" color=lightgrey shape=box style=filled]
+	1941817706336 -> 1941817706240 [label=right]
+	1941817706624 [label=a2 color=lightblue shape=ellipse style=filled]
+	1941817706816 -> 1941817706624 [label="30-34"]
+	1941817706432 [label="Liść
+yes" color=lightgrey shape=box style=filled]
+	1941817706624 -> 1941817706432 [label="50-59"]
+	1941817706528 [label="Liść
+no" color=lightgrey shape=box style=filled]
+	1941817706624 -> 1941817706528 [label="40-49"]
+	1941817706720 [label="Liść
+yes" color=lightgrey shape=box style=filled]
+	1941817706816 -> 1941817706720 [label="25-29"]
+	1941817707392 [label=a9 color=lightblue shape=ellipse style=filled]
+	1941817707488 -> 1941817707392 [label=ge40]
+	1941817707008 [label="Liść
+no" color=lightgrey shape=box style=filled]
+	1941817707392 -> 1941817707008 [label=left_low]
+	1941817707104 [label="Liść
+no" color=lightgrey shape=box style=filled]
+	1941817707392 -> 1941817707104 [label=left_up]
+	1941817707200 [label="Liść
+no" color=lightgrey shape=box style=filled]
+	1941817707392 -> 1941817707200 [label=right_up]
+	1941817707296 [label="Liść
+yes" color=lightgrey shape=box style=filled]
+	1941817707392 -> 1941817707296 [label=central]
+	1941817707776 [label=a7 color=lightblue shape=ellipse style=filled]
+	1941817708064 -> 1941817707776 [label="15-17"]
+	1941817707584 [label="Liść
+no" color=lightgrey shape=box style=filled]
+	1941817707776 -> 1941817707584 [label=3]
+	1941817707680 [label="Liść
+yes" color=lightgrey shape=box style=filled]
+	1941817707776 -> 1941817707680 [label=2]
+	1941817707872 [label="Liść
+yes" color=lightgrey shape=box style=filled]
+	1941817708064 -> 1941817707872 [label="12-14"]
+	1941817707968 [label="Liść
+yes" color=lightgrey shape=box style=filled]
+	1941817708064 -> 1941817707968 [label="24-26"]
+	1941817708448 [label=a3 color=lightblue shape=ellipse style=filled]
+	1941817798720 -> 1941817708448 [label="?"]
+	1941817708160 [label="Liść
+yes" color=lightgrey shape=box style=filled]
+	1941817708448 -> 1941817708160 [label=premeno]
+	1941817708256 [label="Liść
+yes" color=lightgrey shape=box style=filled]
+	1941817708448 -> 1941817708256 [label=ge40]
+	1941817708352 [label="Liść
+no" color=lightgrey shape=box style=filled]
+	1941817708448 -> 1941817708352 [label=lt40]
+}

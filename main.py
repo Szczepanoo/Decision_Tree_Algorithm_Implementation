@@ -1,5 +1,6 @@
-
-# 1. Odczyt danych
+################################################################################################################
+# LAB 1
+# Odczyt danych
 
 def wykryj_separator(linia):
     """
@@ -119,6 +120,7 @@ def policz_wystapienia_wartosci(atrybuty):
         wyst.append(sl)
     return wyst
 
+
 def liczba_mozliwych_wartosci(atrybuty):
     """
     Zwraca listę liczb: ile różnych wartości ma każdy atrybut.
@@ -160,10 +162,12 @@ def wystapienia_wartosci(atrybuty):
     return wynik
 
 
+################################################################################################################
+# LAB 2
+# Wynaczanie Entropii
 
-
-# 2 Wynaczanie Entropii
 import math
+
 
 def log2_approx(x, epsilon=1e-12):
     """
@@ -188,6 +192,7 @@ def log2_approx(x, epsilon=1e-12):
         k += 1
         term *= -y
     return n + result
+
 
 def entropia(wystapienia):
     """
@@ -239,9 +244,217 @@ def info_atrybutu(atrybuty, decyzje):
     return wyniki
 
 
+################################################################################################################
+# LAB 3
+# Przyrost informacji
+
+def przyrost_informacji(atrybuty, decyzje):
+    """
+    Liczy Gain(X, T) = Info(T) - Info(X, T) dla każdego atrybutu.
+    Zwraca listę wartości przyrostu informacji.
+    """
+    # entropia wszystkich decyzji
+    wyst_dec = {}
+    for d in decyzje:
+        wyst_dec[d] = wyst_dec.get(d, 0) + 1
+    info_T = entropia(wyst_dec)
+
+    # Info(X, T) dla każdego atrybutu
+    info_XT = info_atrybutu(atrybuty, decyzje)
+
+    # Gain(X, T)
+    gain = [info_T - val for val in info_XT]
+    return gain
+
+
+# Zrównoważony przyrost informacji (GainRatio)
+
+def split_info(atrybuty):
+    """
+    Liczy SplitInfo(X, T) dla każdego atrybutu X.
+    """
+    liczba_kol = len(atrybuty[0])
+    total = len(atrybuty)
+    wyniki = []
+
+    for kol in range(liczba_kol):
+        # liczymy liczność każdej wartości atrybutu
+        sl = {}
+        for w in atrybuty:
+            val = w[kol]
+            sl[val] = sl.get(val, 0) + 1
+
+        # entropia podziału według atrybutu
+        ent = 0.0
+        for count in sl.values():
+            if count > 0:
+                p = count / total
+                ent -= p * math.log2(p)
+        wyniki.append(ent)
+    return wyniki
+
+
+def gain_ratio(atrybuty, decyzje):
+    """
+    Liczy GainRatio(X, T) = Gain(X, T) / SplitInfo(X, T) dla każdego atrybutu.
+    """
+    gain = przyrost_informacji(atrybuty, decyzje)
+    split = split_info(atrybuty)
+
+    # unikamy dzielenia przez zero
+    gain_ratio_list = []
+    for g, s in zip(gain, split):
+        if s == 0:
+            gain_ratio_list.append(0.0)
+        else:
+            gain_ratio_list.append(g / s)
+    return gain_ratio_list
+
+
+################################################################################################################
+# LAB 3
+
+def podziel_dane(atrybuty, decyzje, idx_atrybutu):
+    """
+    Zwraca słownik:
+      wartość_atrybutu -> (lista_atrybutów_potomka, lista_decyzji_potomka)
+    """
+    wyniki = {}
+    for w, d in zip(atrybuty, decyzje):
+        val = w[idx_atrybutu]
+        if val not in wyniki:
+            wyniki[val] = ([], [])
+        wyniki[val][0].append(w)
+        wyniki[val][1].append(d)
+    return wyniki
+
+
+def policz_wystapienia(lista):
+    wynik = {}
+    for x in lista:
+        if x not in wynik:
+            wynik[x] = 0
+        wynik[x] += 1
+    return wynik
+
+
+def buduj_drzewo(atrybuty, decyzje, poziom=0):
+    """
+    Rekurencyjna budowa drzewa zgodnie z pseudokodem:
+    - oblicz GainRatio
+    - wybierz najlepszy podział
+    - jeśli max GainRatio == 0 → STOP (liść)
+    - w przeciwnym razie buduj poddrzewa
+    """
+
+    print("\n" + "="*60)
+    print(f"POZIOM {poziom} – liczba obiektów: {len(atrybuty)}")
+    print("="*60)
+
+    # 1. Entropia
+    ent = entropia(policz_wystapienia(decyzje))
+    print(f"Info(T) = {ent:.6f}")
+
+    # 2. Gain
+    gain = przyrost_informacji(atrybuty, decyzje)
+    for i, g in enumerate(gain, 1):
+        print(f"Gain(a{i}, T) = {g:.6f}")
+
+    # 3. SplitInfo
+    splitinfo = split_info(atrybuty)
+    for i, s in enumerate(splitinfo, 1):
+        print(f"SplitInfo(a{i}, T) = {s:.6f}")
+
+    # 4. GainRatio
+    gr = gain_ratio(atrybuty, decyzje)
+    for i, r in enumerate(gr, 1):
+        print(f"GainRatio(a{i}, T) = {r:.6f}")
+
+    # 5. Kryterium stopu – brak poprawy
+    najlepszy = max(gr)
+    if najlepszy == 0.0:
+        print("KONIEC – wszystkie GainRatio = 0.0 → Tworzymy liść.")
+        # zwracamy klasę większościową
+        klasa = max(set(decyzje), key=decyzje.count)
+        print(f"Liść → klasa: {klasa}")
+        return
+
+    # 6. Wybór najlepszego atrybutu
+    idx_best = gr.index(najlepszy)
+    print(f"\nNajlepszy podział: a{idx_best+1}, GainRatio = {najlepszy:.6f}")
+
+    # 7. Dzielenie danych na podzbiory
+    potomkowie = podziel_dane(atrybuty, decyzje, idx_best)
+
+    # 8. Rekurencyjne zejście po każdym potomku
+    for val, (atr_p, dec_p) in potomkowie.items():
+        print(f"\n-- Wartość {val} → {len(atr_p)} obiektów")
+        buduj_drzewo(atr_p, dec_p, poziom + 1)
+
+
+################################################################################################################
+# WIZUALIZACJA
+
+# Prosta klasa węzła drzewa
+class Node:
+    def __init__(self, nazwa=None, dzieci=None, liść=False, klasa=None):
+        self.nazwa = nazwa  # nazwa atrybutu
+        self.dzieci = dzieci or {}  # słownik: wartość -> Node
+        self.liść = liść
+        self.klasa = klasa  # klasa decyzyjna, jeśli liść
+
+
+# Funkcja budująca drzewo i zwracająca strukturę Node
+def buduj_drzewo_struktura(atrybuty, decyzje):
+    if not atrybuty or not decyzje:
+        return None
+
+    # Kryterium stopu – wszystkie decyzje są takie same
+    if len(set(decyzje)) == 1:
+        return Node(liść=True, klasa=decyzje[0])
+
+    # Obliczamy GainRatio
+    gr = gain_ratio(atrybuty, decyzje)
+    najlepszy = max(gr)
+    if najlepszy == 0:
+        klasa = max(set(decyzje), key=decyzje.count)
+        return Node(liść=True, klasa=klasa)
+
+    idx_best = gr.index(najlepszy)
+    nazwa_atrybutu = f"a{idx_best + 1}"
+
+    potomkowie = podziel_dane(atrybuty, decyzje, idx_best)
+    dzieci = {}
+    for val, (atr_p, dec_p) in potomkowie.items():
+        dzieci[val] = buduj_drzewo_struktura(atr_p, dec_p)
+
+    return Node(nazwa=nazwa_atrybutu, dzieci=dzieci)
+
+
+def drukuj_drzewo_tekstowo(node, poziom=0, wartosc_krawedzi=None):
+    """
+    Rekurencyjne drukowanie drzewa w konsoli.
+    node – obiekt Node
+    poziom – głębokość drzewa (wcięcia)
+    wartosc_krawedzi – wartość atrybutu, która prowadzi do tego węzła
+    """
+    prefix = "    " * poziom
+    if wartosc_krawedzi is not None:
+        prefix += f"[{wartosc_krawedzi}] -> "
+
+    if node.liść:
+        print(f"{prefix}LIŚĆ: {node.klasa}")
+    else:
+        print(f"{prefix}Atrybut: {node.nazwa}")
+        for val, child in node.dzieci.items():
+            drukuj_drzewo_tekstowo(child, poziom + 1, val)
+
+################################################################################################################
 # PRZYKŁAD UŻYCIA
 
-pliki = ["dane1.txt", "dane2.txt", "dane3.txt"]
+#pliki = ["Rozszerzona_breast+cancer/breast-cancer.data","tab1_1.txt","tab1_2.txt"]
+
+pliki = ["tab1_1.txt","tab1_2.txt"]
 
 for nazwa in pliki:
     print("=" * 60)
@@ -264,19 +477,37 @@ for nazwa in pliki:
 
     print("\nEntropia wartości decyzyjnych:")
     ent_dec = entropia(dict((d, decyzje.count(d)) for d in set(decyzje)))
-    print(f"I(D) = {ent_dec:.6f}")
+    print(f"Info(T) = {ent_dec:.6f}")
 
-    # opcjonalnie: entropia dla każdego atrybutu
-    print("\nEntropia dla każdego atrybutu:")
+    print("\n[OPCJONALNE] Entropia dla każdego atrybutu:")
     for i, sl in enumerate(wyniki, start=1):
         ent = entropia(sl)
-        print(f"I(A{i}) = {ent:.6f}")
+        print(f"Info(A{i}) = {ent:.6f}")
 
     print("\nInfo(X, T) dla każdego atrybutu:")
     info_wszystkie = info_atrybutu(atrybuty, decyzje)
     for i, info_val in enumerate(info_wszystkie, start=1):
         print(f"Info(a{i}, T) = {info_val:.6f}")
 
+    print("\nPrzyrost informacji dla każdego atrybutu (Gain):")
+    gain_wszystkie = przyrost_informacji(atrybuty, decyzje)
+    for i, g in enumerate(gain_wszystkie, start=1):
+        print(f"Gain(a{i}, T) = {g:.6f}")
+
+    print("\nSplitInfo dla każdego atrybutu:")
+    splitinfo_wszystkie = split_info(atrybuty)
+    for i, s in enumerate(splitinfo_wszystkie, start=1):
+        print(f"SplitInfo(a{i}, T) = {s:.6f}")
+
+    print("\nZrównoważony przyrost informacji (GainRatio) dla każdego atrybutu:")
+    gr_wszystkie = gain_ratio(atrybuty, decyzje)
+    for i, gr in enumerate(gr_wszystkie, start=1):
+        print(f"GainRatio(a{i}, T) = {gr:.6f}")
+
+    print("\n\n### REKURENCYJNA BUDOWA DRZEWA ###")
+    buduj_drzewo(atrybuty, decyzje)
+
+    print("\n Wizualizacja:", nazwa)
+    drukuj_drzewo_tekstowo(buduj_drzewo_struktura(atrybuty, decyzje))
+
     print("\n")  # odstęp między plikami
-
-
